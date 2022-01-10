@@ -18,6 +18,7 @@ from django.urls import path, include
 from flightApp import views
 from rest_framework.routers import DefaultRouter
 
+# Routers are for VIEWSETS
 router = DefaultRouter()
 router.register('flights', views.FlightViewSet)
 router.register('passengers', views.PassengerViewSet)
@@ -25,5 +26,9 @@ router.register('reservations', views.ReservationViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('flightApi/', include(router.urls))
+    path('flightApi/', include(router.urls)),
+    # configure function-based views directly NOT with router
+    path('flightApi/findFlights/', views.find_flights),
+    path('flightApi/createReservation/', views.create_reservation),
+    
 ]
