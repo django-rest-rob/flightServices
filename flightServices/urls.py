@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from flightApp import views
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
 
 # Routers are for VIEWSETS
 router = DefaultRouter()
@@ -30,5 +31,6 @@ urlpatterns = [
     # configure function-based views directly NOT with router
     path('flightApi/findFlights/', views.find_flights),
     path('flightApi/createReservation/', views.create_reservation),
-    
+    path('get-token/', obtain_auth_token,name='api_token_auth')
+
 ]
