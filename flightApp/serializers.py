@@ -19,6 +19,7 @@ class FlightSerializer(serializers.ModelSerializer):
         print('>>>> validate()')
         if (re.match('^[a-zA-Z0-9]*$', data['flightNumber'])==None):
             raise serializers.ValidationError('Invalid Flight Number. Please make it alpha-numeric')
+        return data
 
 
 class PassengerSerializer(serializers.ModelSerializer):

@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework import filters
 from rest_framework.permissions import IsAuthenticated
+from django.forms.models import model_to_dict
 
 # Create your views here.
 # Custom function-based view - must be marked as api_view to make it...
@@ -40,7 +41,7 @@ def create_reservation(request):
     # call save on the reservation model object
     reservation.save()
 
-    return Response(status = status.HTTP_201_CREATED)
+    return Response(model_to_dict(reservation), status = status.HTTP_201_CREATED)
 
 
 
